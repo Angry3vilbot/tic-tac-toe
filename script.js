@@ -124,12 +124,18 @@ function checkWin(){
                 if(xLoc.includes(num)) {
                     countX.push(num)
                     if(countX.length === 3) {
+                        document.getElementById(countX[0]).classList.add('winBlocks')
+                        document.getElementById(countX[1]).classList.add('winBlocks')
+                        document.getElementById(countX[2]).classList.add('winBlocks')
                         alert("X Wins!")
                     }
                 }
                 else if(oLoc.includes(num)) {
                     countO.push(num)
                     if(countO.length === 3) {
+                        document.getElementById(countO[0]).classList.add('winBlocks')
+                        document.getElementById(countO[1]).classList.add('winBlocks')
+                        document.getElementById(countO[2]).classList.add('winBlocks')
                         alert("O Wins!")
                     }
                 }
