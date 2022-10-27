@@ -1,3 +1,6 @@
+*{
+    transition: 1s;
+}
 div#game-board{
     display: grid;
     grid-template-columns: repeat(3, 1fr);

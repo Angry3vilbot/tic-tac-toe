@@ -130,7 +130,7 @@ function checkWin(){
                             document.getElementById(countX[0]).classList.add('winBlocks')
                             document.getElementById(countX[1]).classList.add('winBlocks')
                             document.getElementById(countX[2]).classList.add('winBlocks')
-                            alert("X Wins!")
+                            alert(`${player.name} Wins!`)
                             const box = document.querySelectorAll('.cell');
                             [].forEach.call(box,function(el){
                                 el.removeEventListener('click', player.placeMarker)
@@ -149,16 +149,8 @@ function checkWin(){
                                 el.removeEventListener('click', player.placeMarker)
                                 el.removeEventListener('click', player2.placeMarker)
                             });
-                            alert("O Wins!")
+                            alert(`${player2.name} Wins!`)
                         }
-                    }
-                    else if(playCounter === 9){
-                        const box = document.querySelectorAll('.cell');
-                        [].forEach.call(box,function(el){
-                            el.removeEventListener('click', player.placeMarker)
-                            el.removeEventListener('click', player2.placeMarker)
-                        });
-                        alert('stalemate')
                     }
         })
     })
