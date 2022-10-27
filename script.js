@@ -108,6 +108,8 @@ function renderBoard(){
 }
 function checkWin(){
     console.log('checking')
+    playCounter++
+    console.log(`counter: ${playCounter}`)
     const winningMoves = 
     [["1", "2", "3"],
     ["4", "5", "6"],
@@ -117,33 +119,59 @@ function checkWin(){
     ["3", "6", "9"],
     ["1", "5", "9"],
     ["3", "5", "7"]];
-    winningMoves.forEach(ch => {
-        const countX = [];
-        const countO = [];
-            ch.forEach(num => {
-                if(xLoc.includes(num)) {
-                    countX.push(num)
-                    if(countX.length === 3) {
-                        document.getElementById(countX[0]).classList.add('winBlocks')
-                        document.getElementById(countX[1]).classList.add('winBlocks')
-                        document.getElementById(countX[2]).classList.add('winBlocks')
-                        alert("X Wins!")
+    if(playCounter != 9){
+        winningMoves.forEach(ch => {
+            const countX = [];
+            const countO = [];
+                ch.forEach(num => {
+                    if(xLoc.includes(num)) {
+                        countX.push(num)
+                        if(countX.length === 3) {
+                            document.getElementById(countX[0]).classList.add('winBlocks')
+                            document.getElementById(countX[1]).classList.add('winBlocks')
+                            document.getElementById(countX[2]).classList.add('winBlocks')
+                            alert("X Wins!")
+                            const box = document.querySelectorAll('.cell');
+                            [].forEach.call(box,function(el){
+                                el.removeEventListener('click', player.placeMarker)
+                                el.removeEventListener('click', player2.placeMarker)
+                            });
+                        }
                     }
-                }
-                else if(oLoc.includes(num)) {
-                    countO.push(num)
-                    if(countO.length === 3) {
-                        document.getElementById(countO[0]).classList.add('winBlocks')
-                        document.getElementById(countO[1]).classList.add('winBlocks')
-                        document.getElementById(countO[2]).classList.add('winBlocks')
-                        alert("O Wins!")
+                    else if(oLoc.includes(num)) {
+                        countO.push(num)
+                        if(countO.length === 3) {
+                            document.getElementById(countO[0]).classList.add('winBlocks')
+                            document.getElementById(countO[1]).classList.add('winBlocks')
+                            document.getElementById(countO[2]).classList.add('winBlocks')
+                            const box = document.querySelectorAll('.cell');
+                            [].forEach.call(box,function(el){
+                                el.removeEventListener('click', player.placeMarker)
+                                el.removeEventListener('click', player2.placeMarker)
+                            });
+                            alert("O Wins!")
+                        }
                     }
-                }
-                else if(playCounter == 9){
-                    alert('stalemate')
-                }
+                    else if(playCounter === 9){
+                        const box = document.querySelectorAll('.cell');
+                        [].forEach.call(box,function(el){
+                            el.removeEventListener('click', player.placeMarker)
+                            el.removeEventListener('click', player2.placeMarker)
+                        });
+                        alert('stalemate')
+                    }
+        })
     })
-})
+    }
+    else{
+        const box = document.querySelectorAll('.cell');
+                        [].forEach.call(box,function(el){
+                            el.removeEventListener('click', player.placeMarker)
+                            el.removeEventListener('click', player2.placeMarker)
+                        });
+                        alert('stalemate')
+    }
+
 }
 function checkX(element){
     if(element == "x"){
