@@ -1,0 +1,19 @@
+div#game-board{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    background-color: rgba(0, 0, 225, 0.3);
+    width: 612px;
+    height: 612px;
+}
+#game-board div{
+    width: 200px;
+    height: 200px;
+    border: 2px black solid;
+    font-size: 200px;
+    text-align: center;
+    display: block;
+}
+.winBlocks{
+    background-color: lime;
+}
